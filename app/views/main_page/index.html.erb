@@ -1,24 +1,17 @@
 <table>
 	<tr>
-	  <td colspan="1">Шаповалов Евгений Андреевич</td>
+	  <td colspan="1" >Шаповалов Евгений Андреевич</td>
 	  	
 	</tr>
 	<tr>
-	  <td rowspan="4"><%=image_tag("avatar.jpg")  %></td>
-	  <td><%=link_to "Обо мне", "#" %></td>	
+	  <td><%=image_tag("avatar.jpg")  %></td>
+	  <td id = "menu">
+	  <div>
+	  <p><%=link_to "Обо мне", "#" %></p>
+	  <p><%=link_to "Мои работы", "#" %></p>	
+	  <p><%=link_to "Сделать заказ", "#" %></p>
+	  <p><%=link_to "Контакты", "#" %></p>	
+	  </div>	
+	  </td>	
 	</tr>
-	<tr>
-	  
-	  <td><%=link_to "Мои работы", "#" %></td>	
-	</tr>
-	<tr>
-	  
-	  <td><%=link_to "Сделать заказ", "#" %></td>	
-	</tr>
-	<tr>
-	  
-	  <td><%=link_to "Контакты", "#" %></td>	
-	</tr>
-
-
 </table>

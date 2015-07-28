@@ -1,4 +1,9 @@
-table 
-	{
+table {
 	margin:auto;
 	}
+
+#menu {
+	padding-top: 10px;
+	padding-left: 40px;
+	padding-bottom: 410px;
+    }

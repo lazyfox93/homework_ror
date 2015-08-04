@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804104910) do
+ActiveRecord::Schema.define(version: 20150804132026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,33 @@ ActiveRecord::Schema.define(version: 20150804104910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "available_animals", force: :cascade do |t|
+    t.integer  "animal_id"
+    t.integer  "seller_id"
+    t.float    "price"
+    t.integer  "quantity"
+    t.text     "note"
+    t.text     "animal_picture"
+    t.date     "last_show_date"
+    t.float    "age"
+    t.float    "weight"
+    t.float    "height"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "available_animals", ["animal_id"], name: "index_available_animals_on_animal_id", using: :btree
+  add_index "available_animals", ["seller_id"], name: "index_available_animals_on_seller_id", using: :btree
+
+  create_table "sellers", force: :cascade do |t|
+    t.float    "ballance"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sellers", ["user_id"], name: "index_sellers_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -38,4 +65,7 @@ ActiveRecord::Schema.define(version: 20150804104910) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "available_animals", "animals"
+  add_foreign_key "available_animals", "sellers"
+  add_foreign_key "sellers", "users"
 end

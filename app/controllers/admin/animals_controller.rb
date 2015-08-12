@@ -1,4 +1,4 @@
-class AnimalsController < ApplicationController
+class Admin::AnimalsController < ApplicationController
 
 def new
 	@animal = Animal.new
@@ -8,7 +8,7 @@ def create
 	@animal.animals_type = params[:animal][:animals_type]
 	@animal.breed = params[:animal][:breed]
 	@animal.save
-	redirect_to animals_path	
+	redirect_to admin_animals_path	
 end
 
 def index
@@ -27,11 +27,11 @@ def update
 	@animal.animals_type = params[:animal][:animals_type]
 	@animal.breed = params[:animal][:breed]
 	@animal.save
-	redirect_to animals_path	
+	redirect_to admin_animals_path	
 end
 
 def destroy
 	 Animal.find(params[:id]).destroy
-	 redirect_to animals_path
+	 redirect_to admin_animals_path
 end
 end

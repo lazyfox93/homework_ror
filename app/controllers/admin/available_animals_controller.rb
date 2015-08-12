@@ -1,2 +1,2 @@
-class AvailableAnimalsController < ApplicationController
+class Admin::AvailableAnimalsController < ApplicationController
 end

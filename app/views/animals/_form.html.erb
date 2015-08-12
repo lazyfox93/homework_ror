@@ -1,6 +1,13 @@
 <%= form_for @animal do |form| %>
-	<%= form.text_field :id %>
-	<%= form.text_field :animals_type %>
-	<%= form.text_field :breed %>
-	<%= form.submit 'Сохранить' %>
+
+  <!--<%= form.label :id %>
+  <%= form.text_field :id %>-->
+
+  <%= form.label :animals_type, 'Вид' %>
+  <%= form.text_field :animals_type %>
+
+  <%= form.label :breed, 'Порода' %>
+  <%= form.text_field :breed %>
+
+  <%= form.submit 'Сохранить' %>
 <%- end %>

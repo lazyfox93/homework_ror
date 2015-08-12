@@ -12,7 +12,7 @@
 		<td><%= animal.animals_type %></td>
 		<td><%= link_to(animal.breed, animal_path(id: animal.id)) %></td>
 		<td><%= link_to('Редактировать', edit_animal_path(id: animal.id) ) %></td>
-		<td><%= link_to('Удилить', animal_path(id: animal.id), method: :delete ) %></td>
+		<td><%= link_to('Удалить', animal_path(id: animal.id), method: :delete ) %></td>
 	</tr>
 
 	<%- end %>

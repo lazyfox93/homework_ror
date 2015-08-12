@@ -57,5 +57,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root 'home#index'
+  #root :animals_path
+  resources :animals
   
 end

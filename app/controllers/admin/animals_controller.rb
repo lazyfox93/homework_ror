@@ -1,5 +1,6 @@
 class Admin::AnimalsController < ApplicationController
 
+
 def new
 	@animal = Animal.new
 end
@@ -20,6 +21,7 @@ def show
 end
 
 def edit
+	
 	@animal = Animal.find(params[:id])
 end
 def update

@@ -1,7 +1,9 @@
 class Admin::AnimalsController < ApplicationController
 
-
+before_action :check_admin
+	
 def new
+	
 	@animal = Animal.new
 end
 def create
@@ -21,7 +23,7 @@ def show
 end
 
 def edit
-	
+
 	@animal = Animal.find(params[:id])
 end
 def update
@@ -36,4 +38,9 @@ def destroy
 	 Animal.find(params[:id]).destroy
 	 redirect_to admin_animals_path
 end
+
+def check_admin
+	redirect_to home_index_path unless can? :mamge, Animal
+end
+
 end

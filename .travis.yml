@@ -6,7 +6,7 @@ postgresql: "9.3"
 before_script:
 - psql -c 'create database db_for_animal_dev;' -U postgres
 - psql -c 'create database db_for_animal_test;' -U postgres
-  run: rake db:migrate RAILS_ENV=test
+
 deploy:
   provider: heroku
   api_key:
@@ -15,4 +15,4 @@ deploy:
   on:
     repo: lazyfox93/homework_ror
     branch: dev
-  run: rake db:migrate
+  run: rake db:migrate ENV=test

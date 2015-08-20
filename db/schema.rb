@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811201005) do
-
+ActiveRecord::Schema.define(version: 20150819215207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +25,6 @@ ActiveRecord::Schema.define(version: 20150811201005) do
 
   create_table "available_animals", force: :cascade do |t|
     t.integer  "animal_id"
-    t.integer  "seller_id"
     t.float    "price"
     t.integer  "quantity"
     t.text     "note"
@@ -37,10 +35,12 @@ ActiveRecord::Schema.define(version: 20150811201005) do
     t.float    "height"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+    t.string   "description"
   end
 
   add_index "available_animals", ["animal_id"], name: "index_available_animals_on_animal_id", using: :btree
-  add_index "available_animals", ["seller_id"], name: "index_available_animals_on_seller_id", using: :btree
+  add_index "available_animals", ["user_id"], name: "index_available_animals_on_user_id", using: :btree
 
   create_table "payment_logs", force: :cascade do |t|
     t.integer  "user_id"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20150811201005) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "available_animals", "animals"
-  add_foreign_key "available_animals", "sellers"
+  add_foreign_key "available_animals", "users"
   add_foreign_key "payment_logs", "available_animals"
   add_foreign_key "payment_logs", "users"
   add_foreign_key "sellers", "users"

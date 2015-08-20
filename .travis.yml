@@ -15,4 +15,4 @@ deploy:
   on:
     repo: lazyfox93/homework_ror
     branch: dev
-  run: rake db:migrate ENV=test
+  run: rake db:migrate 

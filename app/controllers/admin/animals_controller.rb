@@ -14,6 +14,7 @@ end
 def index
 	@animals_count = Animal.count
 	@animals = Animal.all
+	@animals = Animal.order(:id).page(params[:page]).per(5)
 end
 def show
 	@animal = Animal.find(params[:id])

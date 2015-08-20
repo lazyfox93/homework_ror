@@ -4,16 +4,16 @@
 <p></p>
 <%= link_to('Добавить новый тип или породу животного', new_admin_animal_path)  %>
 <p></p>
-<table>
-	<%- @animals.each do |animal| %>
-	
-	<tr>
-		<td><%= animal.id %></td>
-		<td><%= animal.animals_type %></td>
-		<td><%= link_to(animal.breed, admin_animal_path(id: animal.id)) %></td>
-		<td><%= link_to('Редактировать', edit_admin_animal_path(id: animal.id) ) %></td>
-		<td><%= link_to('Удалить', admin_animal_path(id: animal.id), method: :delete ) %></td>
-	</tr>
 
-	<%- end %>
+<table>
+	
+	<tbody id="animals">
+		
+
+		<%= render @animals %>			
+
+	</tbody>
 </table>
+<div id="paginator">
+			<%= paginate @animals, :remote => true %>
+</div>

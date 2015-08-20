@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'available_animals/index'
+
   get 'home/index'
 
   devise_for :users

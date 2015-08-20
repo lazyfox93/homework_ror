@@ -44,12 +44,12 @@ GEM
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
+    cancancan (1.12.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    cancancan (1.12.0)
     choice (0.2.0)
     cloudinary (1.1.0)
       aws_cf_signer
@@ -232,12 +232,9 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-<<<<<<< HEAD
+  cancancan (~> 1.10)
   carrierwave
   cloudinary
-=======
-  cancancan (~> 1.10)
->>>>>>> for_hw_8
   coffee-rails (~> 4.1.0)
   devise
   jbuilder (~> 2.0)

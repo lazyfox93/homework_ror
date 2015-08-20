@@ -1,4 +1,7 @@
 class Admin::AvailableAnimalsController < ApplicationController
+
+  before_action :check_admin
+
   def new
   	@available_animal = AvailableAnimal.new
   end
@@ -37,5 +40,10 @@ class Admin::AvailableAnimalsController < ApplicationController
   	AvailableAnimal.find(params[:id]).destroy
     redirect_to admin_available_animals_path
   end
+
+  def check_admin
+    redirect_to root_path unless can? :mamge, Animal
+  end
+
 
 end

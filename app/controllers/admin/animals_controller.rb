@@ -40,7 +40,7 @@ def destroy
 end
 
 def check_admin
-	redirect_to home_index_path unless can? :mamge, Animal
+	redirect_to root_path unless can? :mamge, Animal
 end
 
 end

@@ -1,17 +1,24 @@
 <h1>МОИ ОБЬЯВЛЕНИЯ </h1>
 <p> количество ваших обьявлений базе <%= @available_animals_count  %></p>
+<p></p>
+<%= link_to('Добавить обьявление', new_admin_available_animal_path)  %>
 <table>
-	
-	<%- @available_animals.each do |available_animals| %>
 	<tr>
-		<td><%= available_animals.id %></td>
-		<td><%= available_animals.animal_id %></td>
-		<td><%= available_animals.seller_id %></td>
+		<td>Заголовок/Картинка</td>
+		<td>Цена</td>
+		<td>Количество</td>
+		<td>Описание</td>
+	</tr>
+	<%- @available_animals.each do |available_animals| %>
+
+	<tr>
+		<td><%= available_animals.description %></br>
+			<%= image_tag(available_animals.animal_picture_url(:thumb)) if available_animals.animal_picture? %></td>
 		<td><%= available_animals.price %></td>
 		<td><%= available_animals.quantity %></td>
-		<td><%= available_animals.description %></td>
-		<td><%= available_animals.note %></td>
-		
+		<td><%= link_to(available_animals.note, admin_available_animal_path(id: available_animals.id)) %></td>
+		<td><%= link_to('Редактировать', edit_admin_available_animal_path(id: available_animals.id) ) %></td>
+		<td><%= link_to('Удалить', admin_available_animal_path(id: available_animals.id), method: :delete ) %></td>
 	</tr>
 <%- end %>
 </table>

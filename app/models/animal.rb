@@ -1,3 +1,3 @@
 class Animal < ActiveRecord::Base
-	has_many :available_animals
+	belongs_to :user	
 end

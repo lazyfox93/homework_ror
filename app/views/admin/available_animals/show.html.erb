@@ -1,9 +1,0 @@
-<h1><%= @available_animal.description   %></h1>
-<%= image_tag(@available_animal.animal_picture_url(:thumb)) if @available_animal.animal_picture? %>
-<ul>
-	<li><%= @available_animal.price %></li>
-	<li><%= @available_animal.quantity %></li>
-	<li><%= @available_animal.note %></li>
-</ul>
-
-<%= link_to('Вернуться к списку обьявлений ', admin_available_animals_path) %>

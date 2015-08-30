@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826173752) do
+ActiveRecord::Schema.define(version: 20150830215641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,8 @@ ActiveRecord::Schema.define(version: 20150826173752) do
   create_table "animals", force: :cascade do |t|
     t.string   "animals_type"
     t.string   "breed"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "available_animals", force: :cascade do |t|
-    t.integer  "animal_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.float    "price"
     t.integer  "quantity"
     t.text     "note"
@@ -33,47 +29,12 @@ ActiveRecord::Schema.define(version: 20150826173752) do
     t.float    "age"
     t.float    "weight"
     t.float    "height"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "user_id"
-    t.string   "description"
+    t.integer  "users_id"
   end
-
-  add_index "available_animals", ["animal_id"], name: "index_available_animals_on_animal_id", using: :btree
-  add_index "available_animals", ["user_id"], name: "index_available_animals_on_user_id", using: :btree
-
-  create_table "payment_logs", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "available_animal_id"
-    t.date     "payment_date"
-    t.float    "price"
-    t.text     "operation"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
-
-  add_index "payment_logs", ["available_animal_id"], name: "index_payment_logs_on_available_animal_id", using: :btree
-  add_index "payment_logs", ["user_id"], name: "index_payment_logs_on_user_id", using: :btree
-
-  create_table "sellers", force: :cascade do |t|
-    t.float    "ballance"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "sellers", ["user_id"], name: "index_sellers_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "phone"
-    t.string   "city"
-    t.string   "country"
-    t.text     "address"
-    t.integer  "raiting"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -95,9 +56,20 @@ ActiveRecord::Schema.define(version: 20150826173752) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "available_animals", "animals"
-  add_foreign_key "available_animals", "users"
-  add_foreign_key "payment_logs", "available_animals"
-  add_foreign_key "payment_logs", "users"
-  add_foreign_key "sellers", "users"
+  create_table "users_infos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "city"
+    t.string   "country"
+    t.text     "address"
+    t.integer  "raiting"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "users_infos", ["user_id"], name: "index_users_infos_on_user_id", using: :btree
+
+  add_foreign_key "users_infos", "users"
 end

@@ -1,0 +1,10 @@
+	<tr>
+	  <td><%= image_tag(animal.animal_picture) if animal.animal_picture? %></td>
+	  <td><%= animal.id %></td>
+	  <td><%= animal.breed %></td>
+	  <td><%= animal.animals_type %></td>
+	  <td><%= animal.note %></td>
+	  <td><%= link_to('Просмотреть', admin_animal_path(id: animal.id)) %></td>
+	  <td><%= link_to('Редактировать', edit_admin_animal_path(id: animal.id) ) %></td>
+	  <td><%= link_to('Удалить', admin_animal_path(id: animal.id), method: :delete ) %></td>
+	</tr>

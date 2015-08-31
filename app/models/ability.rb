@@ -6,7 +6,11 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
       can :manage, :all
-    else
+    else if user.confirmed_at
+      can :create, Animal
+      can :manage, Animal, :user_id => user.id
+      can :manage, UsersInfo, :user_id => user.id
+    else 
       can :read, Animal
       cannot :manage, Animal
     end
@@ -38,4 +42,6 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
   end
+end
+
 end

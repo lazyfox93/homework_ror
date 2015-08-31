@@ -57,9 +57,9 @@ Rails.application.routes.draw do
   #   end
   root 'home#index'
   #root :animals_path
-  resources :animals
+  resources :animals, :users_infos
 
   namespace :admin do
-    resources :animals, :available_animals
+    resources :animals, :users_infos
   end
 end
